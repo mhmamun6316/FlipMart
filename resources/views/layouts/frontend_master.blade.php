@@ -24,12 +24,14 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/animate.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/rateit.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css"
 
 
 
 
     <!-- Icons/Glyphs -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/toastr.css">
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
@@ -653,6 +655,7 @@
     <!-- For demo purposes – can be removed on production : End -->
 
     <!-- JavaScripts placed at the end of the document so the pages load faster -->
+ 
     <script src="{{ asset('frontend') }}/assets/js/jquery-1.11.1.min.js"></script>
 
     <script src="{{ asset('frontend') }}/assets/js/bootstrap.min.js"></script>
@@ -668,6 +671,31 @@
     <script src="{{ asset('frontend') }}/assets/js/bootstrap-select.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/wow.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/scripts.js"></script>
+    <script type="text/javascript" src="{{ asset('backend') }}/toastr.min.js"></script>
+
+    <script>
+        @if (Session::has('message'))
+            var type ="{{ Session::get('alert-type', 'info') }}"
+            switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+            }
+        @endif
+
+    </script>
 
 
 </body>
