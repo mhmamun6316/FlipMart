@@ -52,10 +52,32 @@
                 <div class="header-top-inner">
                     <div class="cnt-account">
                         <ul class="list-unstyled">
-                            <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
-                            <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-                            <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
+                            <li><a href="#"><i class="icon fa fa-user"></i>
+                                @if (session()->get('language') == 'bangla')
+                                        আমার প্রোফাইল
+                                    @else
+                                        My Account
+                                    @endif
+                            </a></li>
+                            <li><a href="#"><i class="icon fa fa-heart"></i>
+                                @if (session()->get('language') == 'bangla') 
+                                        ইচ্ছেতালিকা
+                                    @else
+                                         Wishlist
+                                    @endif
+                                    </a></li>
+                            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>
+                                @if (session()->get('language') == 'bangla') 
+                                          কার্ট
+                                    @else
+                                         My Cart
+                                    @endif</a></li>
+                            <li><a href="#"><i class="icon fa fa-check"></i>
+                                @if (session()->get('language') == 'bangla') 
+                                        চেকআউট
+                                    @else
+                                        Checkout
+                                    @endif</a></li>
                             <li>
                                 @auth
                                     <a href="{{ route('user.dashboard') }}"><i class="icon fa fa-lock"></i>My Profile</a>
@@ -84,11 +106,16 @@
 
                             <li class="dropdown dropdown-small">
                                 <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span
-                                        class="value">English </span><b class="caret"></b></a>
+                                        class="value">
+                                        @if (session()->get('language') == 'bangla')
+                                        ভাষা@else Language @endif
+                                    </span><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">German</a></li>
+                                    @if (session()->get('language') == 'bangla')
+                                        <li><a href="{{ route('english.language') }}">English</a></li>
+                                    @else
+                                        <li><a href="{{ route('bangla.language') }}">বাংলা</a></li>
+                                    @endif
                                 </ul>
                             </li>
                         </ul><!-- /.list-unstyled -->

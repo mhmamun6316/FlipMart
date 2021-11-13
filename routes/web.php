@@ -7,6 +7,7 @@ Use App\Http\Controllers\Admin\CategoryController;
 Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\Admin\SliderController;
 Use App\Http\Controllers\Frontend\IndexController;
+Use App\Http\Controllers\Frontend\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -105,3 +106,5 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth'],'namespace'=>'User
 });
 
 // ***************************** Frontend Route ******************************//
+Route::get('language/bangla',[LanguageController::class,'bangla'])->name('bangla.language');
+Route::get('language/english',[LanguageController::class,'english'])->name('english.language');
